@@ -57,24 +57,25 @@
       margin: 0;
     }
 
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--muted);
-    }
+.theme-toggle {
+  background: var(--card, transparent);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
-    .theme-toggle:hover {
-      color: var(--text);
-      border-color: var(--accent);
-    }
+  /* make it visible */
+  color: var(--text);
+  font-size: 1rem;
+}
 
+.theme-toggle:hover {
+  border-color: var(--accent);
+}
     .icon {
       font-size: 0.9rem;
     }
@@ -156,7 +157,7 @@
     <header>
       <h1>Tom Retter</h1>
       <button class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon" class="icon">☾</span>
+        <span id="theme-icon" class="icon">🌙</span>
       </button>
     </header>
 
@@ -193,14 +194,13 @@
   <script>
     const icon = document.getElementById("theme-icon");
 
-    function updateIcon() {
-      if (document.body.classList.contains("light")) {
-        icon.textContent = "☀";
-      } else {
-        icon.textContent = "☾";
-      }
-    }
-
+function updateIcon() {
+  if (document.body.classList.contains("light")) {
+    icon.textContent = "🌙"; // show moon when in light mode
+  } else {
+    icon.textContent = "☀️"; // show sun when in dark mode
+  }
+}
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "light") {
       document.body.classList.add("light");
