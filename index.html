@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tom Retter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --text: #e6e8eb;
+      --muted: #9aa3af;
+      --accent: #4cc9f0;
+      --border: #1a2233;
+
+      --space: 1.4rem;
+    }
+
+    body.light {
+      --bg: #fafafa;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #0284c7;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3.2rem;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .icon {
+      font-size: 0.9rem;
+    }
+
+    .intro, .about {
+      margin-bottom: 2.8rem;
+    }
+
+    .intro p,
+    .about p {
+      margin: 0.4rem 0;
+      max-width: 40ch;
+    }
+
+    .intro p:first-child {
+      color: var(--text);
+    }
+
+    .intro p,
+    .about p {
+      color: var(--muted);
+    }
+
+    .links {
+      margin-top: 0.8rem;
+    }
+
+    .links a {
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-top: 2.6rem;
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+    }
+
+    .placeholder {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 3.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Tom Retter</h1>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon" class="icon">☾</span>
+      </button>
+    </header>
+
+    <div class="intro">
+      <p>Hi — this is my corner of the internet.</p>
+      <p>More to come soon.</p>
+
+      <div class="links">
+        <a href="https://github.com/retter">GitHub</a>
+        <a href="https://www.linkedin.com/in/tomretter">LinkedIn</a>
+      </div>
+    </div>
+
+	<div class="about">
+	    <h2>About</h2>
+	    <p>Senior Software & Data Platform Engineer with 20+ years of experience.</p>
+	    <p>Building scalable reporting systems, data platforms, and event-driven pipelines.</p>
+	</div>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="card">
+        <p class="placeholder">
+          First project landing here soon — building something worth sharing.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026</p>
+    </footer>
+
+  </div>
+
+  <script>
+    const icon = document.getElementById("theme-icon");
+
+    function updateIcon() {
+      if (document.body.classList.contains("light")) {
+        icon.textContent = "☀";
+      } else {
+        icon.textContent = "☾";
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+    }
+
+    updateIcon();
+
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      const theme = document.body.classList.contains("light") ? "light" : "dark";
+      localStorage.setItem("theme", theme);
+      updateIcon();
+    }
+  </script>
+
+</body>
+</html>
