@@ -182,8 +182,13 @@
 	  <div class="card">
 	    <h3>IoT Temperature Pipeline</h3>
 	    <p>
-	      End-to-end IoT system using Heltec V3 devices, LoRa, WiFi, Kafka, and PostgreSQL.
-	      Collects temperature data and streams it through a containerized backend pipeline.
+	      Low buck end-to-end IoT system using Heltec V3 devices, LoRa, WiFi, Python, 
+          Kafka, and PostgreSQL.  Collects internal chip temperature data and streams 
+          it through a containerized backend pipeline to raw sensor table in 
+          postgresql db, then ETLs from raw table to fact and dimension tables for 
+          analysis.  Architecture based on desire to run micro services on very low 
+          resoure ubuntu server (re-purposed windows 10 computer that couldn't 
+          migrate to windows 11)
 	    </p>
 	    <p>
 	      <a href="https://github.com/retter/iot-temperature-pipeline" target="_blank">
